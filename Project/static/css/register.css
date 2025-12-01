@@ -1,0 +1,135 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: url("hd.jpeg") no-repeat cover;
+    background-size: cover;
+    
+    backdrop-filter: blur(5px);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container {
+    width: 1500px; 
+    display: flex;
+    height: 800px;;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url("hd.jpeg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    /* Transparent container background */
+    border-radius: 12px;
+    
+}
+/* Register Form Container */
+.register-container {
+    /* Transparent glass effect */
+    padding: 30px;
+    height: max-content;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+   
+}
+input[type="text"], input[type="password"], textarea {
+    border: 2px solid rgba(0, 123, 255, 0.7);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    color:black;
+    margin: 10px 0;
+    background: transparent;
+    transition: border-color 0.3s, box-shadow 0.3s ease;
+}
+/* Form Title */
+.register-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-container label {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+.register-container input,
+.register-container select,
+.register-container button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    color:white;
+    
+}
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    border: 2px solid rgba(0, 123, 255, 0.7);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    color:white;
+    margin: 10px 0;
+    background: transparent;
+    transition: border-color 0.3s, box-shadow 0.3s ease;
+}
+
+.register-container input,
+.register-container select {
+    background: rgba(255, 255, 255, 0.4);
+    color: black;
+}
+
+.register-container button {
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.register-container button:hover {
+    background: blue;
+}
+
+/* Link Styling */
+.register-container a {
+    color: #ffdd57;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .register-container {
+        width: 90%;
+    }
+}

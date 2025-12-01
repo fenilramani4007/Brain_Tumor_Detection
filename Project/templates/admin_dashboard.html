@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Admin Dashboard</h1>
+
+    <!-- User Search -->
+    <div class="search-container">
+        <input type="text" id="search_user" placeholder="Search user by username..." autocomplete="off">
+        <button onclick="searchUser()">Search</button>
+        <div id="suggestions"></div>
+    </div>
+
+    {% if user_data %}
+    <h3>User Activity for: {{ search_query }}</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Question</th>
+                <th>Status</th>
+                <th>Medicine</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in user_data %}
+            <tr>
+                <td>{{ record.doctor_name }}</td>
+                <td>{{ record.date }}</td>
+                <td>{{ record.time }}</td>
+                <td>{{ record.question }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.medicine or 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- Pending Appointments Table -->
+    <h3>Pending Appointments</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Question</th>
+                <th>Status</th>
+                <th>Approve</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.patient_name }}</td>
+                <td>{{ appointment.doctor_name }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.question }}</td>
+                <td>{{ appointment.status }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('approve_appointment', appointment_id=appointment._id) }}">
+                        <input type="text" name="medicine" placeholder="Prescribe Medicine" required>
+                        <button type="submit">Approve</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        {% if page > 1 %}
+        <a href="{{ url_for('admin_dashboard', page=page-1) }}">Previous</a>
+        {% endif %}
+
+        {% if page < total_pages %}
+        <a href="{{ url_for('admin_dashboard', page=page+1) }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    // AJAX user search suggestions
+    document.getElementById("search_user").addEventListener("input", function() {
+        let query = this.value.trim();
+        if (query.length === 0) {
+            document.getElementById("suggestions").innerHTML = "";
+            return;
+        }
+
+        fetch(`/search_user_suggestions?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                let suggestionBox = document.getElementById("suggestions");
+                suggestionBox.innerHTML = "";
+                data.forEach(username => {
+                    let div = document.createElement("div");
+                    div.classList.add("suggestion-item");
+                    div.textContent = username;
+                    div.onclick = function() {
+                        document.getElementById("search_user").value = username;
+                        suggestionBox.innerHTML = "";
+                    };
+                    suggestionBox.appendChild(div);
+                });
+            });
+    });
+
+    function searchUser() {
+        let query = document.getElementById("search_user").value.trim();
+        if (query.length > 0) {
+            window.location.href = `/admin_dashboard?search=${query}`;
+        }
+    }
+</script>
+{% endblock %}
+
+</body>
+</html>

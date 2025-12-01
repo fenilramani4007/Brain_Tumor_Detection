@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest Hospitals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hospitals.css') }}">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="hospitals-container">
+        <h2>Top Brain Tumor Treatment Hospitals in India</h2>
+
+        <!-- Hospital Grid (5 columns x 2 rows) -->
+        <div class="hospital-grid">
+            {% set hospitals = [
+                {'name': 'AIIMS Delhi', 'address': 'Ansari Nagar, New Delhi', 'contact': '+91 11 2658 8500'},
+                {'name': 'Tata Memorial Hospital', 'address': 'Parel, Mumbai', 'contact': '+91 22 2417 7000'},
+                {'name': 'Christian Medical College (CMC)', 'address': 'Vellore, Tamil Nadu', 'contact': '+91 416 228 1000'},
+                {'name': 'Apollo Hospitals', 'address': 'Greams Road, Chennai', 'contact': '+91 44 2829 0200'},
+                {'name': 'Fortis Memorial Research Institute', 'address': 'Gurgaon, Haryana', 'contact': '+91 124 492 1021'},
+                {'name': 'Medanta - The Medicity', 'address': 'Gurgaon, Haryana', 'contact': '+91 124 414 1414'},
+                {'name': 'Narayana Health', 'address': 'Bangalore, Karnataka', 'contact': '+91 80 7122 2222'},
+                {'name': 'Max Super Speciality Hospital', 'address': 'Saket, New Delhi', 'contact': '+91 11 2651 5050'},
+                {'name': 'Kokilaben Dhirubhai Ambani Hospital', 'address': 'Mumbai, Maharashtra', 'contact': '+91 22 3099 9999'},
+                {'name': 'Manipal Hospitals', 'address': 'Bangalore, Karnataka', 'contact': '+91 80 4011 9000'}
+            ] %}
+
+            {% for hospital in hospitals %}
+            <div class="hospital-card">
+                <h3>{{ hospital.name }}</h3>
+                <p><strong>Address:</strong> {{ hospital.address }}</p>
+                <p><strong>Contact:</strong> {{ hospital.contact }}</p>
+                <a href="https://www.google.com/maps/search/?q={{ hospital.address }}" target="_blank" class="btn">View on Map</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+    <div class="location">
+    <div class="location-section">
+        <h2 class="head">Find Hospitals Near You</h2>
+        <form id="hospitalSearchForm">
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" placeholder="Enter country">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" placeholder="Enter state">
+            </div>
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" id="district" placeholder="Enter district">
+            </div>
+            <div class="form-group">
+                <label for="area">Area</label>
+                <input type="text" id="area" placeholder="Enter area">
+            </div>
+            <button type="button" class="btn" onclick="searchHospitals()">Search</button>
+        </form>
+    </div>
+
+    <!-- Google Map -->
+    <div id="map-container">
+        <div id="map" class="map"></div>
+    </div>
+    
+</div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 20.5937, lng: 78.9629 }, // Default: India
+                zoom: 5
+            });
+        }
+
+        function searchHospitals() {
+            var country = document.getElementById("country").value;
+            var state = document.getElementById("state").value;
+            var district = document.getElementById("district").value;
+            var area = document.getElementById("area").value;
+
+            var searchQuery = `${area}, ${district}, ${state}, ${country}`;
+            var encodedQuery = encodeURIComponent(searchQuery);
+            var googleMapsUrl = `https://www.google.com/maps/search/?q=${encodedQuery}`;
+
+            window.open(googleMapsUrl, "_blank");
+        }
+        var map;
+    var locations = [
+        { name: "Hospital 1", lat: 28.7041, lng: 77.1025 }, // Delhi, India
+        { name: "Hospital 2", lat: 19.0760, lng: 72.8777 }, // Mumbai, India
+        { name: "Hospital 3", lat: 12.9716, lng: 77.5946 }, // Bangalore, India
+        { name: "Hospital 4", lat: 13.0827, lng: 80.2707 }, // Chennai, India
+        { name: "Hospital 5", lat: 22.5726, lng: 88.3639 }, // Kolkata, India
+        { name: "Hospital 6", lat: 17.385044, lng: 78.486671 }, // Hyderabad, India
+        { name: "Hospital 7", lat: 23.0225, lng: 72.5714 }, // Ahmedabad, India
+        { name: "Hospital 8", lat: 26.4499, lng: 80.3319 }, // Lucknow, India
+        { name: "Hospital 9", lat: 21.1702, lng: 72.8311 }, // Surat, India
+        { name: "Hospital 10", lat: 30.7333, lng: 76.7794 } // Chandigarh, India
+    ];
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: { lat: 20.5937, lng: 78.9629 } // Default: India
+        });
+
+        // Initial marker
+        updateLocation();
+
+        // Update the location every 5 seconds
+        setInterval(updateLocation, 5000);
+    }
+
+    function updateLocation() {
+        var randomIndex = Math.floor(Math.random() * locations.length);
+        var location = locations[randomIndex];
+
+        // Update map center and add marker
+        map.setCenter(new google.maps.LatLng(location.lat, location.lng));
+        
+        new google.maps.Marker({
+            position: new google.maps.LatLng(location.lat, location.lng),
+            map: map,
+            title: location.name
+        });
+    }
+    </script>
+
+    
+    <!-- Separate Form Section -->
+    
+    {% endblock %}
+</body>
+</html>

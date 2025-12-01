@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_dashboard.css') }}">
+    
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="dashboard-container">
+        <center>
+        <h1 class="h1">User Dashboard</h1>
+
+        <h3>Your Previous Predictions</h3>
+        </center>
+        {% if activities %}
+            <div class="predictions-grid">
+                {% for activity in activities %}
+                    <div class="prediction-card">
+                        <!-- Check if the 'image' field exists -->
+                        {% if activity['image'] %}
+                            <img src="{{ url_for('static', filename='uploads/' + activity['image']) }}" alt="Tumor Image">
+                        {% else %}
+                            <p>No image available.</p>
+                        {% endif %}
+                        <p><strong>Prediction:</strong> {{ activity['prediction'] }}</p>
+                        <p><strong>Confidence:</strong> {{ activity['confidence'] }}%</p>
+                        <p><strong>Date:</strong> {{ activity['date'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a href="{{ url_for('dashboard', page=page-1) }}" class="btn">Previous</a>
+                {% endif %}
+                <span>Page {{ page }} of {{ total_pages }}</span>
+                {% if page < total_pages %}
+                    <a href="{{ url_for('dashboard', page=page+1) }}" class="btn">Next</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>No predictions found.</p>
+        {% endif %}
+
+        <h3>Your Appointments</h3>
+        {% if appointments %}
+            <ul>
+                {% for appointment in appointments %}
+                    <li>{{ appointment.date }} - {{ appointment.time }} - Status: {{ appointment.status }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments scheduled.</p>
+        {% endif %}
+
+        <h3>AI Health Suggestions</h3>
+        <p>{{ ai_suggestion }}</p>
+    </div>
+    {% endblock %}
+</body>
+</html>

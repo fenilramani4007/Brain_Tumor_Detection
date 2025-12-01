@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tumor Prediction & Health Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    
+    <!-- Hero Section: Full-screen immersive experience -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Welcome to the Tumor Prediction & Health Portal</h1>
+                <p>Empowering you with early tumor detection and personalized healthcare insights.</p>
+                <a href="{{ url_for('predict') }}" class="btn hero-btn">Start Your Prediction</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section with Dynamic Scroll -->
+    <section class="about">
+        <div class="about-content">
+            <h2 class="h2">Our Vision</h2>
+            <p>We aim to revolutionize healthcare with AI-powered tumor detection that brings peace of mind to patients everywhere. With our platform, you get more than just predictions – you get actionable insights.</p>
+        </div>
+    </section>
+
+    <!-- Features Section: Stretching full width -->
+    <section class="features">
+        <div class="feature-container">
+            <div class="feature-card">
+                <h3>AI Tumor Detection</h3>
+                <p>Upload your MRI and get real-time predictions with an accuracy that helps guide your healthcare decisions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Appointment Booking</h3>
+                <p>Easily schedule a consultation with your preferred healthcare provider after getting predictions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Nearest Hospitals</h3>
+                <p>Quickly locate top hospitals for tumor treatment in your vicinity, saving you time and worry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section with Elegant Slide-in Animation -->
+    <section class="testimonials">
+        <h2>What Our Patients Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"This platform provided me with insights I never imagined. It helped me understand my health better and make informed decisions."</p>
+                <p>- Emily R.</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"A game-changer for anyone who wants to stay ahead in healthcare. Accurate, easy, and informative."</p>
+                <p>- Mark L.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section with Full-width CTA -->
+    <!-- Action Section - New Call-to-Action with updated layout -->
+<section class="action-section">
+    <div class="action-content">
+        <h2 class="action-title">Don't Wait – Take Control of Your Health Today</h2>
+        <p class="action-description">Get early predictions and empower yourself with the right healthcare decisions. Make your health your priority now!</p>
+        <a href="{{ url_for('predict') }}" class="btn action-btn">Get Started Now</a>
+    </div>
+</section>
+
+<!-- Navigation Links Section - Horizontal Scrolling with Improved Visual Design -->
+<section class="navigation-links">
+    <h2 class="links-title">Quick Links</h2>
+    <div class="links-container">
+        <a href="{{ url_for('nearest_hospitals') }}" class="link-item">Find Nearest Hospitals</a>
+        <a href="{{ url_for('appointment') }}" class="link-item">Book an Appointment</a>
+        <a href="{{ url_for('predict') }}" class="link-item">Upload Your MRI</a>
+        <a href="{{ url_for('dashboard') }}" class="link-item">View Your Dashboard</a>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<!-- Footer Section -->
+<footer class="new-footer">
+    <div class="footer-content">
+        <p>&copy; 2025 HealthHub. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#" class="social-icon">Facebook</a>
+            <a href="#" class="social-icon">Twitter</a>
+            <a href="#" class="social-icon">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+
+
+    {% endblock %}
+    
+</body>
+</html>
