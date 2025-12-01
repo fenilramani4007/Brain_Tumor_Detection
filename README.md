@@ -8,21 +8,22 @@ The project applies a convolutional neural network (CNN) to analyze MRI images a
 
 This model provides a structured pipeline that includes preprocessing, training, evaluation, and model export for deployment.
 
-Dataset
+- Dataset
 
 The dataset contains MRI images categorized into:
 
-Glioma
+-Glioma
 
-Meningioma
+-Meningioma
 
-Pituitary Tumor
+-Pituitary Tumor
 
-No Tumor
+-No Tumor
 
 Images are divided into training, validation, and testing sets for balanced evaluation.
 
-Methodology
+=> Methodology
+
 1. Data Preprocessing
 
 Images are resized to a fixed dimension.
@@ -34,6 +35,7 @@ Augmentation techniques (rotation, shift, flip) are applied to reduce overfittin
 2. Model Architecture
 
 A CNN-based approach is used to extract spatial features and perform classification.
+
 The model may use a custom CNN or a transfer learning backbone such as TensorFlow or Keras pretrained architectures.
 
 3. Training
