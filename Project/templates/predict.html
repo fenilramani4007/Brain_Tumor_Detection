@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumor Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="prediction-container">
+        <div class="form">
+        <h1>Tumor Prediction</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Upload MRI Image</label>
+                <input type="file" name="image" id="image" required>
+            </div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+</html>

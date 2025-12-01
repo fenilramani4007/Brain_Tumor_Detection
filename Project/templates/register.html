@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tumor Prediction & Health Portal</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="register-container">
+    <h2>Register</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div>
+            <label for="username">Username : </label>
+            <input type="text" name="username" id="username" required>
+        </div>
+
+        <div>
+            <label for="password">Password : </label>
+            <input type="password" name="password" id="password" required>
+        </div>
+
+        <div>
+            <label for="role">Role</label>
+            <select name="role" id="role" required>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="{{ url_for('login') }}">Already have an account? Login here</a>
+</div>
+{% endblock %}
+</body>
+</html>

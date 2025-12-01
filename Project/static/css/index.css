@@ -1,0 +1,160 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Full-Width Containers */
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Hero Section - Full-screen immersive experience */
+.hero {
+    position: relative;
+    
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    width: 1500px;
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: white;
+}
+/* Action Section - New Call-to-Action */
+/* Action Section - New Call-to-Action */
+.action-section {
+    background-color: #1e90ff;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.action-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.action-title {
+    font-size: 3.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.action-description {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.action-btn {
+    padding: 18px 35px;
+    background-color: #ff4500;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #e43b00;
+}
+/* Container for centralized content */
+.container {
+    width: max-content;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url("hd.jpeg"); 
+    background-repeat: no-repeat;
+    /* Transparent container background */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    transition: font-size 0.3s ease;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+.h2{
+    color: black;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 255, 255, 0.1)); /* RGB Transparent gradient */
+    color: #333;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Button Styling */
+button, .btn {
+    background-color: transparent;
+    padding: 12px 25px;
+    border: 2px solid rgba(0, 123, 255, 0.7); /* Hospital Blue */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(0, 123, 255, 0.7);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: rgba(0, 123, 255, 0.7);
+    color: white;
+    transform: scale(1.05);
+}
+
+button:active, .btn:active {
+    transform: scale(0.98);
+}

@@ -1,0 +1,62 @@
+body {
+    background: url("hd.jpeg") no-repeat cover;
+    background-size: cover;
+    
+    backdrop-filter: blur(5px);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.container {
+    width: 1500px; 
+    display: flex;
+    height: 800px;;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-image: url("hd.jpeg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    /* Transparent container background */
+    border-radius: 12px;
+    
+}
+input[type="text"], input[type="password"], textarea {
+    border: 2px solid rgba(0, 123, 255, 0.7);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    color:white;
+    margin: 10px 0;
+    background: transparent;
+    transition: border-color 0.3s, box-shadow 0.3s ease;
+}
+h2{
+   color: white;
+}
+
+.login-container {
+    /* Transparent glass effect */
+    padding: 30px;
+    height: max-content;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+   
+}
+p{
+    color: white;
+    margin-top: 30px;
+}
+label{
+    color:white;
+}
+form{
+    margin-top: 10px;
+}

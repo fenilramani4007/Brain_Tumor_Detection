@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/appointment.css') }}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="appointment-container">
+        <h1 class="head">Book an Appointment</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="doctor_name">Doctor's Name</label>
+                <input type="text" name="doctor_name" id="doctor_name" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Appointment Date</label>
+                <input type="date" name="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Appointment Time</label>
+                <input type="time" name="time" id="time" required>
+            </div>
+            <div class="form-group">
+                <label for="question">Questions for Doctor</label>
+                <textarea name="question" id="question" required></textarea>
+            </div>
+            <button type="submit" class="btn">Book Appointment</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
