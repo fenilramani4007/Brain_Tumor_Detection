@@ -1,63 +1,65 @@
-Brain Tumor Detection Model
+# 🧠 Brain Tumor Detection
 
-This repository contains a deep learning model designed for detecting and classifying brain tumors using MRI scan images. The model distinguishes between four classes: glioma, meningioma, pituitary tumor, and no tumor. It is intended for research, academic learning, and demonstration of AI applications in medical imaging.
+A deep-learning web application that classifies brain MRI scans into four categories — **glioma, meningioma, pituitary tumor, and no tumor** — using a Convolutional Neural Network, served through a Flask web app with real-time image upload.
 
-Overview
+![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=flat&logo=TensorFlow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-%23D00000.svg?style=flat&logo=Keras&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=flat&logo=flask&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white)
 
-The project applies a convolutional neural network (CNN) to analyze MRI images and identify tumor types with high accuracy. CNNs are well-suited to medical imaging because they learn visual patterns such as texture changes, shapes, and abnormalities directly from data.
+## ✨ Features
 
-This model provides a structured pipeline that includes preprocessing, training, evaluation, and model export for deployment.
+- **Four-class classification** of MRI scans (glioma · meningioma · pituitary · no tumor) with a CNN built in TensorFlow/Keras.
+- **Preprocessing and data augmentation** to improve accuracy and reduce overfitting.
+- **Flask web app** with image upload for real-time predictions.
+- **MongoDB integration** for storing user data, prediction history, and appointments.
 
-- Dataset
+## 🛠️ Tech Stack
 
-The dataset contains MRI images categorized into:
+**ML:** Python, TensorFlow, Keras, NumPy, OpenCV/Pillow
+**Web:** Flask, HTML/CSS, JavaScript
+**Database:** MongoDB
 
--Glioma
+## 📊 Model
 
--Meningioma
+- Architecture: CNN <!-- TODO: note layers / or "transfer learning with <base model>" if used -->
+- Dataset: <!-- TODO: link the MRI dataset, e.g. the Kaggle Brain Tumor MRI dataset -->
+- Performance: <!-- TODO: add your real validation accuracy / confusion matrix -->
 
--Pituitary Tumor
+## 🚀 Getting Started
 
--No Tumor
+```bash
+# 1. Clone
+git clone https://github.com/fenilramani4007/Brain_Tumor_Detection.git
+cd Brain_Tumor_Detection
 
-Images are divided into training, validation, and testing sets for balanced evaluation.
+# 2. Install dependencies
+pip install -r requirements.txt
 
-=> Methodology
+# 3. Make sure MongoDB is running locally (or set your connection string)
 
-1. Data Preprocessing
+# 4. Run the app
+python app.py   # <!-- TODO: confirm entry-point filename -->
+```
 
-Images are resized to a fixed dimension.
+Then open `http://127.0.0.1:5000` and upload an MRI image.
 
-Normalization ensures uniform pixel value scale.
+## 📁 Project Structure
 
-Augmentation techniques (rotation, shift, flip) are applied to reduce overfitting.
+```
+Brain_Tumor_Detection/
+├── app.py                # Flask entry point   <!-- TODO: confirm -->
+├── model/                # trained model + notebook
+├── static/ , templates/  # web UI
+├── requirements.txt
+└── README.md
+```
 
-2. Model Architecture
+## ⚠️ Disclaimer
 
-A CNN-based approach is used to extract spatial features and perform classification.
+This project is for **educational and research purposes only** and is **not a medical device**. It must not be used for clinical diagnosis.
 
-The model may use a custom CNN or a transfer learning backbone such as TensorFlow or Keras pretrained architectures.
+## 📬 Contact
 
-3. Training
-
-The model is trained using supervised learning.
-
-Optimization is performed using gradient-based methods.
-
-Validation metrics guide adjustments to hyperparameters.
-
-4. Evaluation
-
-Model performance is measured using:
-
-Accuracy and loss curves
-
-Confusion matrix
-
-Class-wise precision and recall
-
-These metrics help verify reliability across all tumor categories.
-
-5. Deployment
-
-The trained model is exported for integration into applications such as web interfaces, research tools, or diagnostic assistance systems.
+Fenil Ramani — [LinkedIn](https://linkedin.com/in/fenil-ramani-dev)
